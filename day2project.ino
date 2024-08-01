@@ -1,4 +1,4 @@
- #include <rgb_lcd.h>
+  #include <rgb_lcd.h>
 
 #include <DHT.h>
 #include <DHT_U.h>
@@ -86,22 +86,25 @@ void loop() {
 
   if (temperatureF > 85 && humidity <= 35){
     lcd.setRGB(0, 0, 250);
+    lcd.setCursor(0,0);
+    lcd.print("WARNING        !");
     delay(200);
     lcd.setRGB(250, 0, 0);
     delay(500);
-  }
-  else if (temperatureF >= 75 && temperatureF <= 85 && humidity <= 25) {
-    lcd.setRGB(0, 0, 250);
+ }  else if (temperatureF >= 75 && temperatureF <= 85 && humidity <= 25) {
+     lcd.setRGB(0, 0, 250);
+    lcd.setCursor(0,0);
+    lcd.print("WARNING    !");
     delay(200);
     lcd.setRGB(250, 0, 0);
     delay(500);
   }
   else if (temperatureF >= 65 && temperatureF <= 75 && humidity < 15) {
-    lcd.setRGB(255, 0, 255);
+     lcd.setRGB(0, 0, 250);
+    lcd.setCursor(0,0);
+    lcd.print("WARNING    !");
     delay(200);
-    lcd.setRGB(255, 0, 0);
+    lcd.setRGB(250, 0, 0);
     delay(500);
   }
 }
-
-
