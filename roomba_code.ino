@@ -53,7 +53,7 @@ void loop() {
   }
   else if (a == 1 && b == 1 && c == 0) {
     if (b == 1 && a == 1){
-      left();
+      right();
       delay(100);
       stopAll();
       delay(200);
@@ -85,7 +85,7 @@ void loop() {
   }
   else if (a == 0 && b == 1 && c == 0) {
     if (b == 1){
-      left();
+      right();
       delay(100);
       stopAll();
       delay(200);
