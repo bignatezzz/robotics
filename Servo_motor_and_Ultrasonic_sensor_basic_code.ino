@@ -1,6 +1,7 @@
 
 const int trigPin = 10;
 const int echoPin = 11;
+bool var = true;
 
 float duration, distance;
 
@@ -25,34 +26,48 @@ void setup() {
 void loop() {
 // Servo Motor Basic Code
 
-  for (int angle = 0; angle <= 180; angle += 1) { 
-    myservo.write(angle);
-    delay(15);
-    Serial.println(angle);
-  }
-  delay(1000);
+  
+    for (int angle = 0; angle <= 180; angle += 1) { 
+      myservo.write(angle);
+      delay(15);
+      digitalWrite(trigPin, LOW);
+      delayMicroseconds(2);
+      digitalWrite(trigPin, HIGH);
+      delayMicroseconds(10);
+      digitalWrite(trigPin, LOW);
 
-  for (int angle = 180; angle >= 0; angle -= 1) { 
-    myservo.write(angle);
-    delay(15);
-    Serial.println(angle);
-  }
+      duration = pulseIn(echoPin, HIGH);
+      distance = (duration*.0343)/2;
+      Serial.print("Distance: ");
+      Serial.println(distance);
+      delay(100);
+      //Serial.println(angle);
+    }
+    delay(1000);
 
-  delay(1000);
+    for (int angle = 180; angle >= 0; angle -= 1) { 
+      myservo.write(angle);
+      delay(15);
+      //Serial.println(angle);
+      digitalWrite(trigPin, LOW);
+      delayMicroseconds(2);
+      digitalWrite(trigPin, HIGH);
+      delayMicroseconds(10);
+      digitalWrite(trigPin, LOW);
 
+      duration = pulseIn(echoPin, HIGH);
+      distance = (duration*.0343)/2;
+      Serial.print("Distance: ");
+      Serial.println(distance);
+      delay(100);
+    }
 
-// Basic Ultrasonic Sensor Code
+    delay(1000);
 
-  digitalWrite(trigPin, LOW);
-  delayMicroseconds(2);
-  digitalWrite(trigPin, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trigPin, LOW);
+  
+  
 
-  duration = pulseIn(echoPin, HIGH);
-  distance = (duration*.0343)/2;
-  Serial.print("Distance: ");
-  Serial.println(distance);
-  delay(100);
+    
+  
 
 }
