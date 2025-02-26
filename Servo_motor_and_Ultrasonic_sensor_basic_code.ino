@@ -24,12 +24,22 @@ void setup() {
 
 void loop() {
 // Servo Motor Basic Code
-  for (int angle = 0; angle <= 180; angle += 1) {
+
+  for (int angle = 0; angle <= 180; angle += 1) { 
     myservo.write(angle);
     delay(15);
+    Serial.println(angle);
+  }
+  delay(1000);
+
+  for (int angle = 180; angle >= 0; angle -= 1) { 
+    myservo.write(angle);
+    delay(15);
+    Serial.println(angle);
   }
 
   delay(1000);
+
 
 // Basic Ultrasonic Sensor Code
 
@@ -44,4 +54,5 @@ void loop() {
   Serial.print("Distance: ");
   Serial.println(distance);
   delay(100);
+
 }
